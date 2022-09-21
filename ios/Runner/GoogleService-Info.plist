@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>799186075584-ruh1dau2vj2ekcng1c2hq30v1vj1nt9i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.799186075584-ruh1dau2vj2ekcng1c2hq30v1vj1nt9i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB0S23o2HFNc8MsliXoLfV50Slrn47Odjs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>799186075584</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.financeApp</string>
+	<key>PROJECT_ID</key>
+	<string>finance-app-ead1b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>finance-app-ead1b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:799186075584:ios:8c491be7364b700f2ed225</string>
+</dict>
+</plist>

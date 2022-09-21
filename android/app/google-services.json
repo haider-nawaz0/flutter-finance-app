@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "799186075584",
+    "project_id": "finance-app-ead1b",
+    "storage_bucket": "finance-app-ead1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799186075584:android:30e0faf4c49cf98e2ed225",
+        "android_client_info": {
+          "package_name": "com.example.finance_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799186075584-k2rv1ets6tcph811kkiqlrk3fi880pgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSAstjPZLBtDdkz7tJbqiEEfEPg2Los_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799186075584-k2rv1ets6tcph811kkiqlrk3fi880pgi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799186075584-ruh1dau2vj2ekcng1c2hq30v1vj1nt9i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.financeApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
