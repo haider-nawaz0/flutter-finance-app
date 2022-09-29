@@ -1,9 +1,10 @@
 import 'package:finance_app/Pages/home_page.dart';
-import 'package:finance_app/Pages/insights_page.dart';
 import 'package:finance_app/Pages/transactions_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import 'community_page.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -16,9 +17,9 @@ class _TabsScreenState extends State<TabsScreen> {
   int _selectedPage = 0;
 
   final _pageOptions = [
-    HomePage(),
+    const HomePage(),
     const TransactionsPage(),
-    const InsightsPage(),
+    const CommunityPage(),
   ];
 
   @override
@@ -60,8 +61,8 @@ class _TabsScreenState extends State<TabsScreen> {
                   text: 'Transactions',
                 ),
                 GButton(
-                  icon: CupertinoIcons.graph_square_fill,
-                  text: 'Insights',
+                  icon: CupertinoIcons.heart,
+                  text: 'Community',
                 ),
               ],
               selectedIndex: _selectedPage,

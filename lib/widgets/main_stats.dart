@@ -108,7 +108,7 @@ class MainStats extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        avg.toString(),
+                        avg.toStringAsFixed(1),
                         style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

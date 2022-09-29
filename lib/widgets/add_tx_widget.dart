@@ -48,7 +48,7 @@ class _AddTxWidgetState extends State<AddTxWidget> {
 
     var data = {
       "amount": amountController.text,
-      "time": DateTime.now(),
+      "time": FieldValue.serverTimestamp(),
       "transaction_sub_catagory": subTxType,
       "transaction_type": txType,
       "descriptions": descController.text,
@@ -80,26 +80,46 @@ class _AddTxWidgetState extends State<AddTxWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //height: 500,
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 0, top: 0),
+                child: GestureDetector(
+                  onTap: () => {
+                    Navigator.pop(context),
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Cancel",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 15,
               ),
               Text(
                 "Add Transaction",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
-                  color: Colors.black,
-                ),
+                    fontSize: 22,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 30,
               ),
               TextField(
+                keyboardType: TextInputType.number,
                 controller: amountController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(

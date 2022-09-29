@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finance_app/utils/functions.dart';
 import 'package:finance_app/widgets/transaction_card.dart';
-import 'package:finance_app/widgets/user_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,6 +41,7 @@ class _TransactionsPage extends State<TransactionsPage> {
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("user/${user!.uid}/transactions")
+                  .orderBy("time", descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -56,7 +55,6 @@ class _TransactionsPage extends State<TransactionsPage> {
                     itemBuilder: (context, index) {
                       int amount = int.parse(documents[index]['amount']);
 
-                      FirebaseFunctions.spent += amount;
                       if (documents[index]['transaction_type'] != "Deposit") {
                         flag = false;
                       } else {
@@ -77,7 +75,7 @@ class _TransactionsPage extends State<TransactionsPage> {
                     },
                   );
                 } else {
-                  return const Text("");
+                  return const Center(child: Text("No Transactions Found!"));
                 }
               },
             ),
