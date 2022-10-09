@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 35),
+              padding: const EdgeInsets.only(right: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                       "Show More",
                       style: GoogleFonts.poppins(
                           fontSize: 15,
-                          color: Colors.deepOrangeAccent,
+                          color: Colors.deepOrange,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
               context: context,
               builder: (context) => const AddTxWidget());
         },
-        backgroundColor: Colors.black45,
+        backgroundColor: Colors.black,
         child: const Icon(CupertinoIcons.add),
       ),
     );

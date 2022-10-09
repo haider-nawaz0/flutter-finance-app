@@ -42,15 +42,14 @@ class TransactionCard extends StatelessWidget {
           children: [
             //Circle with Icon
             Container(
-              height: 80,
-              width: 80,
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 0.2,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.2),
-
                     spreadRadius: 2,
                     blurRadius: 1,
                     // offset: const Offset(0, 3), // changes position of shadow
@@ -90,8 +89,8 @@ class TransactionCard extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(
-              width: 60,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.2,
             ),
 
             //Column containing Amount and date

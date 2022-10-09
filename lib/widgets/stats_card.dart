@@ -7,6 +7,8 @@ class StatsCard extends StatelessWidget {
   final double avgSpend;
   final int needsCount;
   final int wantsCount;
+  final int depositsCount;
+  final int expendsCount;
 
   const StatsCard(
       {Key? key,
@@ -14,146 +16,268 @@ class StatsCard extends StatelessWidget {
       required this.netDeposit,
       required this.avgSpend,
       required this.needsCount,
-      required this.wantsCount})
+      required this.wantsCount,
+      required this.depositsCount,
+      required this.expendsCount})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 20),
-      child: Container(
-        height: 300,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20, left: 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Center(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width * 0.435,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color(0xff478778),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Total Spent",
-                        style: GoogleFonts.poppins(fontSize: 18),
+                      const Text(
+                        "Deposits Count",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       Text(
-                        totalSpent.toString(),
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
-                      )
+                        depositsCount.toString(),
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Net Deposits",
-                        style: GoogleFonts.poppins(fontSize: 18),
-                      ),
-                      Text(
-                        netDeposit.toString(),
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 37),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Average Spending",
-                          style: GoogleFonts.poppins(fontSize: 18),
-                        ),
-                        Text(
-                          avgSpend.toStringAsFixed(1).toString(),
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
                 ),
               ),
-              const SizedBox(
-                height: 35,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.03,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 37),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Needs : Wants",
-                      style: GoogleFonts.poppins(fontSize: 18),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          needsCount.toString(),
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          ":",
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          wantsCount.toString(),
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width * 0.435,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color(0xCCfe104c),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Expends Count",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        expendsCount.toString(),
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
-        ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 80,
+            width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: const Color(0xff478778),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, top: 10),
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Net Deposit",
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal, color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    netDeposit.toString(),
+                    style: const TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 80,
+            width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: const Color(0xCCfe104c),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, top: 10),
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Net Expend",
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal, color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    totalSpent.toString(),
+                    style: const TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width * 0.28,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color(0xff707B7C),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Average",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        avgSpend.toString(),
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.03,
+              ),
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width * 0.28,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Needs",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        needsCount.toString(),
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.03,
+              ),
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width * 0.28,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.black,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Wants",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        wantsCount.toString(),
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

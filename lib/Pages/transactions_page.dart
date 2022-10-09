@@ -31,8 +31,7 @@ class _TransactionsPage extends State<TransactionsPage> {
             child: Text(
               "Transactions",
               style: GoogleFonts.poppins(
-                fontSize: 25,
-              ),
+                  fontSize: 25, fontWeight: FontWeight.bold),
               textAlign: TextAlign.left,
             ),
           )),

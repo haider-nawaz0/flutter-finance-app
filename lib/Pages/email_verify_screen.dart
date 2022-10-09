@@ -86,7 +86,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
   void initState() {
     super.initState();
 
-    timer = Timer.periodic(const Duration(seconds: 3), (_) async {
+    timer = Timer.periodic(const Duration(seconds: 2), (_) async {
       FirebaseAuth.instance.currentUser!.reload();
 
       setState(() {

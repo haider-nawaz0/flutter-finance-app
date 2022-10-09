@@ -56,6 +56,9 @@ class AccountPage extends StatelessWidget {
                     createdAt:
                         "Joined on ${DateFormat('dd-MMM-yyy').format(time)}");
               }),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
