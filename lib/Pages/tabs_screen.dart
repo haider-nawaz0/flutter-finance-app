@@ -57,8 +57,8 @@ class _TabsScreenState extends State<TabsScreen> {
                   text: 'Home',
                 ),
                 GButton(
-                  icon: CupertinoIcons.square_stack_3d_up,
-                  text: 'Transactions',
+                  icon: CupertinoIcons.search,
+                  text: 'Search',
                 ),
                 GButton(
                   icon: CupertinoIcons.heart,

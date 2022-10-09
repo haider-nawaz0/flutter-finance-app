@@ -126,7 +126,7 @@ class _SignUpState extends State<SignUp> {
                           style: GoogleFonts.poppins(
                               fontSize: 40,
                               fontWeight: FontWeight.normal,
-                              color: Colors.purple),
+                              color: Colors.black),
                         ),
                         const SizedBox(
                           height: 50,
@@ -247,7 +247,7 @@ class _SignUpState extends State<SignUp> {
                         if (isLoading)
                           const Center(
                               child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: Colors.black,
                           )),
                         if (!isLoading)
                           Center(
@@ -257,16 +257,19 @@ class _SignUpState extends State<SignUp> {
                                 height: 50,
                                 width: 150,
                                 decoration: BoxDecoration(
-                                  color: Colors.purple,
+                                  color: Colors.black,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
                                 child: const Center(
-                                    child: Text(
-                                  "Create Account",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal),
+                                    child: Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Text(
+                                    "Create Account",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal),
+                                  ),
                                 )),
                               ),
                             ),

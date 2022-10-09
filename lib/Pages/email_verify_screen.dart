@@ -75,7 +75,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
       emailSent = true;
     }
 
-    Timer(const Duration(seconds: 20), () {
+    Timer(const Duration(minutes: 5), () {
       setState(() {
         emailSent = false;
       });
@@ -118,6 +118,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
     // final user = FirebaseAuth.instance.currentUser!;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -126,17 +127,18 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
                 height: 30,
               ),
               Text(
-                "Woah, wait up",
+                "Woah, slow down",
                 style: GoogleFonts.poppins(
                   fontSize: 40,
+                  color: Colors.white,
                 ),
               ),
               Text(
                 "Verify your email to proceed.",
                 style: GoogleFonts.poppins(
                   fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade800,
                 ),
               ),
               const SizedBox(
@@ -149,7 +151,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     fontSize: 15,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -201,16 +203,26 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
                       ),
                     ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Center(
                 child: GestureDetector(
                   onTap: () => sendEmailVerification(context),
-                  child: Text(
-                    "Request Email Verification Again.",
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: emailSent ? Colors.grey : Colors.black,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        "Request Email Verification Again.",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: emailSent ? Colors.red : Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),

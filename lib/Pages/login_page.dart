@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: GoogleFonts.poppins(
                               fontSize: 40,
                               fontWeight: FontWeight.normal,
-                              color: Colors.purple),
+                              color: Colors.black),
                         ),
                         const SizedBox(
                           height: 5,
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                               height: 250,
                               width: 250,
                               child: Image.asset(
-                                "assets/images/login_image.png",
+                                "assets/images/login-bro.png",
                               )),
                         ),
                         const SizedBox(
@@ -183,7 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (isLoading)
                           const Center(
                               child: CircularProgressIndicator(
-                            color: Colors.purple,
+                            color: Colors.black,
                           )),
                         if (!isLoading)
                           Center(
@@ -195,7 +195,7 @@ class _LoginPageState extends State<LoginPage> {
                                 height: 50,
                                 width: 150,
                                 decoration: BoxDecoration(
-                                  color: Colors.purple,
+                                  color: Colors.black,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
                                 child: const Center(
@@ -234,10 +234,20 @@ class _LoginPageState extends State<LoginPage> {
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return const AlertDialog(
-                                      backgroundColor: Colors.purple,
-                                      title: Text("title"),
-                                      content: Text("message"),
+                                    return AlertDialog(
+                                      backgroundColor: Colors.black,
+                                      title: Text(
+                                        "Forgot your password?",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      content: Text(
+                                        "We're working on it..",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     );
                                   })
                             },

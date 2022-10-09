@@ -29,56 +29,56 @@ class _TransactionsPage extends State<TransactionsPage> {
             margin: const EdgeInsets.only(left: 25, top: 20),
             width: double.infinity,
             child: Text(
-              "Transactions",
+              "Search",
               style: GoogleFonts.poppins(
                   fontSize: 25, fontWeight: FontWeight.bold),
               textAlign: TextAlign.left,
             ),
           )),
           // const UserCard(username: "username", spent: "spent"),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection("user/${user!.uid}/transactions")
-                  .orderBy("time", descending: true)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
-                  }
-                  final documents = snapshot.data!.docs;
+          // Expanded(
+          //   child: StreamBuilder<QuerySnapshot>(
+          //     stream: FirebaseFirestore.instance
+          //         .collection("user/${user!.uid}/transactions")
+          //         .orderBy("time", descending: true)
+          //         .snapshots(),
+          //     builder: (context, snapshot) {
+          //       if (snapshot.hasData) {
+          //         if (snapshot.connectionState == ConnectionState.waiting) {
+          //           return const CircularProgressIndicator();
+          //         }
+          //         final documents = snapshot.data!.docs;
 
-                  return ListView.builder(
-                    itemCount: documents.length,
-                    itemBuilder: (context, index) {
-                      int amount = int.parse(documents[index]['amount']);
+          //         return ListView.builder(
+          //           itemCount: documents.length,
+          //           itemBuilder: (context, index) {
+          //             int amount = int.parse(documents[index]['amount']);
 
-                      if (documents[index]['transaction_type'] != "Deposit") {
-                        flag = false;
-                      } else {
-                        flag = true;
-                      }
-                      return SizedBox(
-                        child: TransactionCard(
-                          transactionType: documents[index]['transaction_type'],
-                          transactionSubCatagory: documents[index]
-                              ['transaction_sub_catagory'],
-                          amount: amount.toString(),
-                          dateTime: f
-                              .format(documents[index]['time'].toDate())
-                              .toString(),
-                          flag: flag,
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(child: Text("No Transactions Found!"));
-                }
-              },
-            ),
-          ),
+          //             if (documents[index]['transaction_type'] != "Deposit") {
+          //               flag = false;
+          //             } else {
+          //               flag = true;
+          //             }
+          //             return SizedBox(
+          //               child: TransactionCard(
+          //                 transactionType: documents[index]['transaction_type'],
+          //                 transactionSubCatagory: documents[index]
+          //                     ['transaction_sub_catagory'],
+          //                 amount: amount.toString(),
+          //                 dateTime: f
+          //                     .format(documents[index]['time'].toDate())
+          //                     .toString(),
+          //                 flag: flag,
+          //               ),
+          //             );
+          //           },
+          //         );
+          //       } else {
+          //         return const Center(child: Text("No Transactions Found!"));
+          //       }
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

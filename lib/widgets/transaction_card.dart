@@ -22,17 +22,17 @@ class TransactionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-      height: 100,
-      padding: const EdgeInsets.all(15),
+      height: 95,
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            blurRadius: 3,
+            offset: const Offset(0, 1), // changes position of shadow
           ),
         ],
       ),
@@ -50,7 +50,7 @@ class TransactionCard extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 2,
+                    spreadRadius: 1,
                     blurRadius: 1,
                     // offset: const Offset(0, 3), // changes position of shadow
                   ),
@@ -59,11 +59,11 @@ class TransactionCard extends StatelessWidget {
               child: Center(
                 child: flag
                     ? const Icon(
-                        CupertinoIcons.down_arrow,
+                        CupertinoIcons.arrow_down_left,
                         size: 30,
                       )
                     : const Icon(
-                        CupertinoIcons.up_arrow,
+                        CupertinoIcons.arrow_up_right,
                         size: 30,
                       ),
               ),

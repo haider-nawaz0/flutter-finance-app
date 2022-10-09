@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_app/widgets/stats_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,16 +37,29 @@ class _FullStatsState extends State<FullStats> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 15),
+            padding: const EdgeInsets.only(left: 0, top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Stats Deep Dive",
-                  style: GoogleFonts.poppins(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          CupertinoIcons.back,
+                          color: Colors.black,
+                        )),
+                    Text(
+                      "Stats Deep Dive",
+                      style: GoogleFonts.poppins(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -118,7 +132,7 @@ class _FullStatsState extends State<FullStats> {
 
               if (documents!.isEmpty) {
                 return const Center(
-                  child: Text("No Transactions found!"),
+                  child: Text("Add Transactions to see Stat."),
                 );
               }
 
