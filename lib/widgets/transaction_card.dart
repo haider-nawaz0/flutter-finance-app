@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
   final String transactionType;
@@ -20,8 +21,9 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formattedNumber = NumberFormat.compact();
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
       height: 95,
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(10),
@@ -118,7 +120,7 @@ class TransactionCard extends StatelessWidget {
                       width: 2,
                     ),
                     Text(
-                      "Rs. ${amount.toString()}",
+                      "Rs. ${formattedNumber.format(double.parse(amount.toString()))}",
                       style: GoogleFonts.lato(
                         fontSize: 18,
                         color: flag ? Colors.green : Colors.red,

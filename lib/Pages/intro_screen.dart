@@ -72,31 +72,40 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  void onDonePress() {}
+  void onDonePress() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LoginPage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return IntroSlider(
-      indicatorConfig: const IndicatorConfig(
-        colorActiveIndicator: Colors.white,
-      ),
-      isShowSkipBtn: false,
-      isShowNextBtn: false,
-      isShowPrevBtn: false,
-      // ignore: prefer_const_constructors
-      doneButtonStyle: ButtonStyle(
-        foregroundColor: MaterialStateProperty.resolveWith((states) {
-          // If the button is pressed, return size 40, otherwise 20
+    return Scaffold(
+      body: IntroSlider(
+        indicatorConfig: const IndicatorConfig(
+          colorActiveIndicator: Colors.white,
+        ),
+        isShowSkipBtn: false,
+        isShowNextBtn: false,
+        isShowPrevBtn: false,
+        // ignore: prefer_const_constructors
+        doneButtonStyle: ButtonStyle(
+          foregroundColor: MaterialStateProperty.resolveWith((states) {
+            // If the button is pressed, return size 40, otherwise 20
 
-          return const Color(0xffffffff);
-        }),
-      ),
-      key: UniqueKey(),
-      listContentConfig: listContentConfig,
-      onDonePress: () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+            return const Color(0xffffffff);
+          }),
+        ),
+        key: UniqueKey(),
+        listContentConfig: listContentConfig,
+        onDonePress: () => Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
         ),
       ),
     );

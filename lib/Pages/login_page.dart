@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           isLoading = false;
         });
 
+        // if (!mounted) {}
         // Navigator.pushReplacement(
         //   context,
         //   MaterialPageRoute(builder: (context) => const HomePage()),
@@ -236,16 +237,20 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(
                           height: 15,
                         ),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () => {},
-                            child: Text(
-                              "Forgot Password?",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 14, color: Colors.black45),
-                            ),
-                          ),
-                        ),
+                        // Center(
+                        //   child: GestureDetector(
+                        //     onTap: () async => {
+                        //       await FirebaseAuth.instance
+                        //           .sendPasswordResetEmail(
+                        //               email: "wj9971571@gmail.com")
+                        //     },
+                        //     child: Text(
+                        //       "Forgot Password?",
+                        //       style: GoogleFonts.poppins(
+                        //           fontSize: 14, color: Colors.black45),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

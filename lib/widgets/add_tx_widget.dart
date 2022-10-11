@@ -101,22 +101,17 @@ class _AddTxWidgetState extends State<AddTxWidget> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 0, top: 0),
-                  child: GestureDetector(
-                    onTap: () => {
-                      Navigator.pop(context),
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Cancel",
-                          style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w500),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: (() => Navigator.pop(context)),
+                        icon: const Icon(
+                          Icons.cancel_rounded,
+                          size: 25,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
@@ -161,8 +156,10 @@ class _AddTxWidgetState extends State<AddTxWidget> {
                     ),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Amount cannot be empty";
+                    if (value == null ||
+                        value.isEmpty ||
+                        int.parse(value.toString()) == 0) {
+                      return "Invalid Input";
                     }
                     return null;
                   },

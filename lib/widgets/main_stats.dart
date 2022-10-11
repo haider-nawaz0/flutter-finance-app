@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MainStats extends StatelessWidget {
   final double spent;
@@ -11,6 +12,7 @@ class MainStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formattedNumber = NumberFormat.compact();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       child: Column(
@@ -38,7 +40,7 @@ class MainStats extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    spent.toString(),
+                    "Rs. ${formattedNumber.format(double.parse(spent.toString()))}",
                     style: const TextStyle(
                         fontSize: 28,
                         color: Colors.white,
@@ -79,7 +81,7 @@ class MainStats extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          deposit.toString(),
+                          "Rs. ${formattedNumber.format(double.parse(deposit.toString()))}",
                           style: const TextStyle(
                               fontSize: 22,
                               color: Colors.white,
@@ -104,7 +106,7 @@ class MainStats extends StatelessWidget {
                       left: 0, right: 0, top: 0, bottom: 0),
                   height: 100,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
+                    padding: const EdgeInsets.only(left: 10, top: 15),
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,9 +121,9 @@ class MainStats extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          avg.toStringAsFixed(1),
+                          "Rs. ${formattedNumber.format(double.parse(avg.toStringAsFixed(0)))}",
                           style: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),

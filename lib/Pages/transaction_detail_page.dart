@@ -25,7 +25,8 @@ class TrxDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var f = NumberFormat("###,###.0#", "en_US");
+    var formattedNumber = NumberFormat.compact();
+    //var f = NumberFormat("###,###.0#", "en_US");
     final fDate = DateFormat('dd MMMM yyyy, hh:mm a');
     bool isExpend = true;
     bool emptyDesc = true;
@@ -120,7 +121,7 @@ class TrxDetailPage extends StatelessWidget {
                     Center(
                       child: isExpend
                           ? Text(
-                              "- Rs ${f.format(amount).toString()}",
+                              "- Rs ${formattedNumber.format(double.parse(amount.toString()))}",
                               style: GoogleFonts.mulish(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -128,7 +129,7 @@ class TrxDetailPage extends StatelessWidget {
                               ),
                             )
                           : Text(
-                              "+ Rs ${f.format(amount).toString()}",
+                              "+ Rs ${formattedNumber.format(double.parse(amount.toString()))}",
                               style: GoogleFonts.poppins(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,

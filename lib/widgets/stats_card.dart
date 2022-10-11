@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StatsCard extends StatelessWidget {
   final double totalSpent;
@@ -21,6 +22,7 @@ class StatsCard extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var formattedNumber = NumberFormat.compact();
     return Center(
       child: Column(
         children: [
@@ -121,7 +123,7 @@ class StatsCard extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    netDeposit.toString(),
+                    "Rs. ${formattedNumber.format(double.parse(netDeposit.toString()))}",
                     style: const TextStyle(
                         fontSize: 24,
                         color: Colors.white,
@@ -156,7 +158,7 @@ class StatsCard extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    totalSpent.toString(),
+                    "Rs. ${formattedNumber.format(double.parse(totalSpent.toString()))}",
                     style: const TextStyle(
                         fontSize: 24,
                         color: Colors.white,
@@ -194,7 +196,8 @@ class StatsCard extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        avgSpend.toStringAsFixed(0),
+                        formattedNumber
+                            .format(double.parse(avgSpend.toString())),
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_app/Pages/account_page.dart';
+import 'package:finance_app/Pages/info_page.dart';
 import 'package:finance_app/Pages/transaction_detail_page.dart';
 import 'package:finance_app/widgets/full_stats_widget.dart';
 import 'package:finance_app/widgets/main_stats.dart';
@@ -7,7 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -49,22 +49,36 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 10),
+              padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                      onPressed: () => {
-                            //Open bottom sheet to show user Profile
-                            showCupertinoModalBottomSheet(
-                                expand: true,
-                                context: context,
-                                builder: (context) => const AccountPage())
-                          },
-                      icon: const Icon(
-                        CupertinoIcons.profile_circled,
-                        size: 35,
-                      ))
+                    onPressed: () => {
+                      //Open bottom sheet to show user Profile
+                      showCupertinoModalBottomSheet(
+                          expand: true,
+                          context: context,
+                          builder: (context) => const AccountPage())
+                    },
+                    icon: const Icon(
+                      CupertinoIcons.person_alt_circle_fill,
+                      size: 35,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => {
+                      //Open bottom sheet to show user Profile
+                      showCupertinoModalBottomSheet(
+                          expand: true,
+                          context: context,
+                          builder: (context) => const InfoPage())
+                    },
+                    icon: const Icon(
+                      CupertinoIcons.info_circle,
+                      size: 25,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -157,62 +171,62 @@ class _HomePageState extends State<HomePage> {
                           flag = true;
                         }
                         return SizedBox(
-                          child: Slidable(
-                            key: const ValueKey(0),
+                          // child: Slidable(
+                          //   key: const ValueKey(0),
 
-                            // The start action pane is the one at the left or the top side.
-                            endActionPane: ActionPane(
-                              // A motion is a widget used to control how the pane animates.
-                              motion: const ScrollMotion(),
+                          //   // The start action pane is the one at the left or the top side.
+                          //   endActionPane: ActionPane(
+                          //     // A motion is a widget used to control how the pane animates.
+                          //     motion: const ScrollMotion(),
 
-                              // A pane can dismiss the Slidable.
-                              dismissible: DismissiblePane(
-                                  onDismissed: () => deleteTransaction(
-                                      context, documents[index].id)),
+                          //     // A pane can dismiss the Slidable.
+                          //     dismissible: DismissiblePane(
+                          //         onDismissed: () => deleteTransaction(
+                          //             context, documents[index].id)),
 
-                              // All actions are defined in the children parameter.
-                              children: [
-                                // A SlidableAction can have an icon and/or a label.
-                                SlidableAction(
-                                  onPressed: (context) => deleteTransaction(
-                                      context, documents[index].id),
-                                  backgroundColor: const Color(0xFFFE4A49),
-                                  foregroundColor: Colors.white,
-                                  icon: Icons.delete,
-                                  label: 'Delete',
-                                ),
-                              ],
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) => TrxDetailPage(
-                                              trxType: documents[index]
-                                                  ['transaction_type'],
-                                              expendType: documents[index]
-                                                  ['transaction_sub_catagory'],
-                                              trxTime: documents[index]['time'],
-                                              trxDesc: documents[index]
-                                                  ['descriptions'],
-                                              amount: amount,
-                                              docId: documents[index].id,
-                                            )));
-                              },
-                              child: TransactionCard(
-                                transactionType: documents[index]
-                                    ['transaction_type'],
-                                transactionSubCatagory: documents[index]
-                                    ['transaction_sub_catagory'],
-                                amount: amount.toString(),
-                                dateTime: f
-                                    .format(documents[index]['time'].toDate())
-                                    .toString(),
-                                flag: flag,
-                              ),
+                          //     // All actions are defined in the children parameter.
+                          //     children: [
+                          //       // A SlidableAction can have an icon and/or a label.
+                          //       SlidableAction(
+                          //         onPressed: (context) => deleteTransaction(
+                          //             context, documents[index].id),
+                          //         backgroundColor: const Color(0xFFFE4A49),
+                          //         foregroundColor: Colors.white,
+                          //         icon: Icons.delete,
+                          //         label: 'Delete',
+                          //       ),
+                          //     ],
+                          //   ),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) => TrxDetailPage(
+                                            trxType: documents[index]
+                                                ['transaction_type'],
+                                            expendType: documents[index]
+                                                ['transaction_sub_catagory'],
+                                            trxTime: documents[index]['time'],
+                                            trxDesc: documents[index]
+                                                ['descriptions'],
+                                            amount: amount,
+                                            docId: documents[index].id,
+                                          )));
+                            },
+                            child: TransactionCard(
+                              transactionType: documents[index]
+                                  ['transaction_type'],
+                              transactionSubCatagory: documents[index]
+                                  ['transaction_sub_catagory'],
+                              amount: amount.toString(),
+                              dateTime: f
+                                  .format(documents[index]['time'].toDate())
+                                  .toString(),
+                              flag: flag,
                             ),
                           ),
+                          //),
                         );
                       },
                     );

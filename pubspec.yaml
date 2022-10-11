@@ -43,8 +43,10 @@ dependencies:
   google_nav_bar: ^5.0.6
   flutter_slidable: ^2.0.0
   intro_slider: ^4.2.0
+  
   shared_preferences: ^2.0.15
-  #animations: ^2.0.3
+  
+
 
 dev_dependencies:
   flutter_test:

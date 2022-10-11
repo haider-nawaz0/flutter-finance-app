@@ -75,6 +75,11 @@ class _FullStatsState extends State<FullStats> {
                     return Padding(
                       padding: const EdgeInsets.all(3),
                       child: ChoiceChip(
+                        backgroundColor: Colors.black54,
+                        selectedColor: Colors.black,
+                        labelStyle: GoogleFonts.poppins(
+                          color: Colors.white,
+                        ),
                         selected: _selectedIndex == index,
                         label: Text(chips[index]),
                         onSelected: (selected) {

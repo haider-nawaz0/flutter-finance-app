@@ -3,7 +3,6 @@ import 'package:finance_app/widgets/user_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class AccountPage extends StatelessWidget {
@@ -18,22 +17,17 @@ class AccountPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 15),
-            child: GestureDetector(
-              onTap: () => {
-                Navigator.pop(context),
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Done",
-                    style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w500),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: (() => Navigator.pop(context)),
+                  icon: const Icon(
+                    Icons.cancel_rounded,
+                    size: 25,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           FutureBuilder(
