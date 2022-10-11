@@ -51,7 +51,7 @@ class StatsCard extends StatelessWidget {
                       Text(
                         depositsCount.toString(),
                         style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 24,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -86,7 +86,7 @@ class StatsCard extends StatelessWidget {
                       Text(
                         expendsCount.toString(),
                         style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 24,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -123,7 +123,7 @@ class StatsCard extends StatelessWidget {
                   Text(
                     netDeposit.toString(),
                     style: const TextStyle(
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
@@ -158,7 +158,7 @@ class StatsCard extends StatelessWidget {
                   Text(
                     totalSpent.toString(),
                     style: const TextStyle(
-                        fontSize: 26,
+                        fontSize: 24,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
@@ -232,7 +232,7 @@ class StatsCard extends StatelessWidget {
                       Text(
                         needsCount.toString(),
                         style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 24,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -267,7 +267,7 @@ class StatsCard extends StatelessWidget {
                       Text(
                         wantsCount.toString(),
                         style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 24,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),

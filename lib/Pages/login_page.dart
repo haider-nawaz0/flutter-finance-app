@@ -26,6 +26,14 @@ class _LoginPageState extends State<LoginPage> {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text.toString().trim(),
             password: passwordController.text.toString().trim());
+        setState(() {
+          isLoading = false;
+        });
+
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => const HomePage()),
+        // );
       } catch (e) {
         setState(() {
           isLoading = false;
@@ -230,27 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Center(
                           child: GestureDetector(
-                            onTap: () => {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      backgroundColor: Colors.black,
-                                      title: Text(
-                                        "Forgot your password?",
-                                        style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      content: Text(
-                                        "We're working on it..",
-                                        style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  })
-                            },
+                            onTap: () => {},
                             child: Text(
                               "Forgot Password?",
                               style: GoogleFonts.poppins(

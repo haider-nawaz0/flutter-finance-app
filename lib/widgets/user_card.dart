@@ -22,43 +22,72 @@ class UserCard extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 2,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 2), // changes position of shadow
           ),
         ],
       ),
-      child: Row(
+      child: Column(
         children: [
-          // Text(
-          //   username.toString(),
-          //   style:
-          //       GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold),
-          // ),
-          // const SizedBox(
-          //   height: 0,
-          // ),
-          const Icon(
-            CupertinoIcons.person_fill,
-            size: 30,
+          Row(
+            children: [
+              const Icon(
+                CupertinoIcons.person_fill,
+                size: 30,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                username.toString(),
+                style: GoogleFonts.poppins(
+                    fontSize: 15, color: Colors.grey.shade600),
+              ),
+            ],
           ),
           const SizedBox(
-            width: 10,
+            height: 10,
           ),
-          Text(
-            email.toString(),
-            style:
-                GoogleFonts.poppins(fontSize: 15, color: Colors.grey.shade600),
+          Row(
+            children: [
+              const Icon(
+                Icons.email,
+                size: 30,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                email.toString(),
+                style: GoogleFonts.poppins(
+                    fontSize: 15, color: Colors.grey.shade600),
+              ),
+            ],
           ),
-
-          // Text(
-          //   createdAt.toString(),
-          //   style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey),
-          // ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              const Icon(
+                Icons.date_range,
+                size: 30,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                createdAt.toString(),
+                style: GoogleFonts.poppins(
+                    fontSize: 15, color: Colors.grey.shade600),
+              ),
+            ],
+          ),
         ],
       ),
     );

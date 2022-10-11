@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_app/widgets/stats_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../Pages/home_page.dart';
 
 class FullStats extends StatefulWidget {
   const FullStats({Key? key}) : super(key: key);
@@ -109,7 +108,8 @@ class _FullStatsState extends State<FullStats> {
           ),
           FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance
-                .collection("user/${HomePage.user!.uid}/transactions")
+                .collection(
+                    "user/${FirebaseAuth.instance.currentUser!.uid}/transactions")
                 .where(
                   "time",
                   isGreaterThan: currTimeLimit,
@@ -124,7 +124,10 @@ class _FullStatsState extends State<FullStats> {
               int expendsCount = 0;
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(
+                    child: CircularProgressIndicator(
+                  color: Colors.black,
+                ));
               }
 
               final documents = snapshot.data?.docs;

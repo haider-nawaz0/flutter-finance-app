@@ -23,18 +23,19 @@ class TransactionCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
       height: 95,
+      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: const Offset(0, 1), // changes position of shadow
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.withOpacity(0.0),
+        //     spreadRadius: 0,
+        //     blurRadius: 0,
+        //     offset: const Offset(0, 0), // changes position of shadow
+        //   ),
+        // ],
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

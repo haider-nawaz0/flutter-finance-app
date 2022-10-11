@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:finance_app/widgets/user_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
-import 'home_page.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -39,11 +39,15 @@ class AccountPage extends StatelessWidget {
           FutureBuilder(
               future: FirebaseFirestore.instance
                   .collection("user")
-                  .doc(HomePage.user!.uid)
+                  .doc(user!.uid)
                   .get(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  );
                 }
 
                 final documents = snapshot.data as DocumentSnapshot;
@@ -59,18 +63,13 @@ class AccountPage extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Sign Out"),
-              IconButton(
-                onPressed: () => {Navigator.pop(context), signOut()},
-                icon: const Icon(
-                  Icons.exit_to_app,
-                  color: Colors.red,
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 100),
+            child: CupertinoButton(
+                padding: const EdgeInsets.all(0),
+                color: Colors.red,
+                child: const Center(child: Text("Sign Out")),
+                onPressed: () => signOut(context)),
           ),
         ],
       )),
@@ -78,6 +77,39 @@ class AccountPage extends StatelessWidget {
   }
 }
 
-signOut() async {
-  await FirebaseAuth.instance.signOut();
+signOut(BuildContext context, [bool mounted = true]) async {
+  showCupertinoModalPopup<void>(
+    context: context,
+    builder: (BuildContext context) => CupertinoAlertDialog(
+      title: const Text('Sign out?'),
+      content: const Text(
+          'Proceed with this action? You can sign in again with you email and password.'),
+      actions: <CupertinoDialogAction>[
+        CupertinoDialogAction(
+          /// This parameter indicates this action is the default,
+          /// and turns the action's text to bold text.
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Nope'),
+        ),
+        CupertinoDialogAction(
+          /// This parameter indicates the action would perform
+          /// a destructive action such as deletion, and turns
+          /// the action's text color to red.
+          /// The action
+          isDestructiveAction: true,
+
+          onPressed: () async {
+            if (!mounted) {}
+            Navigator.pop(context);
+            Navigator.pop(context);
+            await FirebaseAuth.instance.signOut();
+          },
+          child: const Text('Log out'),
+        ),
+      ],
+    ),
+  );
 }

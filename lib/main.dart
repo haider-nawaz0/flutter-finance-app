@@ -1,6 +1,6 @@
 import 'package:finance_app/Pages/email_verify_screen.dart';
+import 'package:finance_app/Pages/home_page.dart';
 import 'package:finance_app/Pages/login_page.dart';
-import 'package:finance_app/Pages/tabs_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.hasData) {
             if (FirebaseAuth.instance.currentUser!.emailVerified) {
-              return const TabsScreen();
+              return const HomePage();
             } else {
               return const EmailVerifyScreen();
             }

@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
-import 'home_page.dart';
 
 class TrxDetailPage extends StatelessWidget {
   final String trxType;
@@ -160,38 +159,71 @@ class TrxDetailPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 2,
-                  offset: const Offset(0, 3), // changes position of shadow
+          if (!emptyDesc)
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 2,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Text(
+                  trxDesc,
+                  style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontStyle: FontStyle.italic),
                 ),
-              ],
+              ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: !emptyDesc
-                  ? Text(
-                      trxDesc,
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic),
-                    )
-                  : Text(
-                      "We don't know why you did that transaction!",
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colors.red,
-                          fontStyle: FontStyle.italic),
-                    ),
-            ),
+        ],
+      ),
+    );
+  }
+
+  void _showAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Delete Transaction?'),
+        content: const Text('This action cannot be undone'),
+        actions: <CupertinoDialogAction>[
+          CupertinoDialogAction(
+            /// This parameter indicates this action is the default,
+            /// and turns the action's text to bold text.
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Nope'),
+          ),
+          CupertinoDialogAction(
+            /// This parameter indicates the action would perform
+            /// a destructive action such as deletion, and turns
+            /// the action's text color to red.
+            /// The action
+            isDestructiveAction: true,
+
+            onPressed: () {
+              FirebaseFirestore.instance
+                  .collection(
+                      "user/${FirebaseAuth.instance.currentUser!.uid}/transactions")
+                  .doc(docId)
+                  .delete();
+
+              Navigator.pop(context); //Remove the popup
+              Navigator.pop(context); //Go back
+            },
+            child: const Text('Yeah, do it'),
           ),
         ],
       ),
@@ -199,79 +231,8 @@ class TrxDetailPage extends StatelessWidget {
   }
 
   void delTrx(BuildContext context) {
-    showAlertDialog(BuildContext context) {
-      // set up the buttons
-      Widget cancelButton = TextButton(
-        child: Text(
-          "Cancel",
-          style: GoogleFonts.poppins(
-            fontSize: 15,
-          ),
-        ),
-        onPressed: () => Navigator.pop(context),
-      );
-      Widget continueButton = TextButton(
-        child: Text(
-          "Continue",
-          style: GoogleFonts.poppins(
-            fontSize: 15,
-          ),
-        ),
-        onPressed: () {
-          FirebaseFirestore.instance
-              .collection("user/${HomePage.user!.uid}/transactions")
-              .doc(docId)
-              .delete();
-
-          Navigator.pop(context);
-          // .then((doc) => Navigator.pop(context),
-
-          // ScaffoldMessenger.of(context).showSnackBar(
-
-          //   const SnackBar(
-          //     content: Text(
-          //       "Transaction Deleted.",
-          //     ),
-          //     backgroundColor: Color(0xff478778),
-          //   ),
-          // ),
-          // onError: (e) => ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text(
-          //       e.toString(),
-          //     ),
-          //     backgroundColor: Theme.of(context).errorColor,
-          //   ),
-          // ),
-          //);
-        },
-      );
-
-      // set up the AlertDialog
-      AlertDialog alert = AlertDialog(
-        title: Text(
-          "Delete this Transaction?",
-          style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-        ),
-        content: Text(
-          "You sure you want to delete this transaction? This cannot be undone",
-          style: GoogleFonts.poppins(),
-        ),
-        actions: [
-          cancelButton,
-          continueButton,
-        ],
-      );
-
-      // show the dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
-    }
-
-    showAlertDialog(context);
+    _showAlertDialog(
+      context,
+    );
   }
 }

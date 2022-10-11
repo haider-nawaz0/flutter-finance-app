@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:finance_app/Pages/home_page.dart';
 import 'package:finance_app/Pages/signup_page.dart';
-import 'package:finance_app/Pages/tabs_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -182,7 +182,7 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
                       onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TabsScreen(),
+                          builder: (context) => const HomePage(),
                         ),
                       ),
                       child: Container(
@@ -205,28 +205,29 @@ class _EmailVerifyScreenState extends State<EmailVerifyScreen> {
               const SizedBox(
                 height: 40,
               ),
-              Center(
-                child: GestureDetector(
-                  onTap: () => sendEmailVerification(context),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        "Request Email Verification Again.",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: emailSent ? Colors.red : Colors.white,
+              !isEmailVerified
+                  ? Center(
+                      child: GestureDetector(
+                        onTap: () => sendEmailVerification(context),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Text(
+                                "Request Email Verification Again.",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: emailSent ? Colors.red : Colors.white,
+                                ),
+                              )),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
+                    )
+                  : const Text(""),
             ],
           ),
         ),

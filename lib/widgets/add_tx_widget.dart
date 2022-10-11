@@ -278,7 +278,7 @@ class _AddTxWidgetState extends State<AddTxWidget> {
                       Icons.description,
                       color: Colors.black45,
                     ),
-                    labelText: "Reason of transaction...",
+                    labelText: "Reason of transaction (Optional)",
                     //border: OutlineInputBorder(),
                     fillColor: Colors.white,
                     filled: true,
